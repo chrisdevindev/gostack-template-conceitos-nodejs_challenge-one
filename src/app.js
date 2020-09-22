@@ -14,20 +14,24 @@ app.use(cors());
 
 
 const repositories = [];
-const repositories = [];
 
 app.get("/repositories", (request, response) => {
-  // TODO
   console.log("deu certo")
 });
 
 app.post("/repositories", (request, response) => {
-  const { title, url, techs, likes } = request.body
+  const { title, url, techs} = request.body
 
-  const repositorie = {id: uuid(), title, url, techs, likes}
+  const repository = {
+    id: uuid(), 
+    title, url, 
+    techs, 
+    likes: 0
+  }
 
-  repositories.push(repositorie)
-  return(response.json(repositorie))
+  repositories.push(repository)
+
+  return(response.json(repository))
 });
 
 app.put("/repositories/:id", (request, response) => {
